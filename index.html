@@ -2,41 +2,108 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>تحميل تطبيق السعيدي اونلاين</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحميل تطبيق السعيدي اونلاين</title>
+
 <style>
 body {
-  font-family: Arial;
-  text-align: center;
-  background: #0f172a;
+  margin: 0;
+  font-family: 'Arial';
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
+  text-align: center;
 }
+
 .container {
-  margin-top: 80px;
+  padding: 40px 20px;
 }
-button {
-  padding: 15px 30px;
-  font-size: 18px;
+
+.logo {
+  width: 100px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #cbd5f5;
+  font-size: 16px;
+}
+
+.download-btn {
+  margin-top: 30px;
   background: #22c55e;
+  padding: 15px 30px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  font-size: 18px;
   color: white;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #16a34a;
+}
+
+.features {
+  margin-top: 50px;
+}
+
+.feature {
+  margin: 15px 0;
+}
+
+.footer {
+  margin-top: 60px;
+  font-size: 14px;
+  color: #94a3b8;
 }
 </style>
-</head>
-<body>
-<div class="container">
-  <h1>تطبيق السعيدي اونلاين</h1>
-  <p>تحميل مباشر وآمن</p>
 
-  <a href="app.apk" download>
-    <button>تحميل التطبيق</button>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- شعار -->
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="logo">
+
+  <!-- عنوان -->
+  <h1>تطبيق السعيدي اونلاين</h1>
+
+  <!-- وصف -->
+  <p>أفضل تطبيق لخدمات الدفع الإلكتروني والشحن في اليمن</p>
+
+  <!-- زر تحميل -->
+  <a href="https://github.com/alsydy/alsaidionlen-app/releases/download/v927.0.0/alsaidi-online.apk">
+    <button class="download-btn">⬇ تحميل التطبيق</button>
   </a>
 
-  <p style="margin-top:20px;font-size:14px;">
-  ملاحظة: قد تحتاج تفعيل التثبيت من مصادر غير معروفة
+  <!-- مميزات -->
+  <div class="features">
+    <div class="feature">⚡ شحن جميع الشبكات</div>
+    <div class="feature">💳 خدمات دفع متنوعة</div>
+    <div class="feature">📊 إدارة حسابك بسهولة</div>
+    <div class="feature">🔒 آمن وسريع</div>
+  </div>
+
+  <!-- ملاحظة -->
+  <p style="margin-top:30px;font-size:14px;">
+  قد تحتاج إلى تفعيل التثبيت من مصادر غير معروفة
   </p>
+
+  <!-- تذييل -->
+  <div class="footer">
+    جميع الحقوق محفوظة © السعيدي اونلاين
+  </div>
+
 </div>
+
 </body>
 </html>
