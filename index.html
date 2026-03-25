@@ -2,172 +2,534 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تحميل تطبيق السعيدي اونلاين</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>السعيدي اونلاين - تحميل التطبيق الرسمي</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-/* شاشة الترحيب */
-.splash {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #020617;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 999;
-  animation: fadeOut 2s ease 2.5s forwards;
-}
+  body {
+    background: linear-gradient(145deg, #0a0f1e 0%, #0f172a 100%);
+    font-family: 'Segoe UI', 'Tajawal', system-ui, -apple-system, 'Roboto', sans-serif;
+    color: #f1f5f9;
+    overflow-x: hidden;
+    direction: rtl;
+  }
 
-.splash img {
-  width: 120px;
-  animation: zoom 1.5s ease infinite alternate;
-}
+  /* شاشة البداية (splash) */
+  .splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #0a0f2a, #030617);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 2000;
+    backdrop-filter: blur(2px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    opacity: 1;
+  }
 
-@keyframes zoom {
-  from {transform: scale(1);}
-  to {transform: scale(1.1);}
-}
+  .splash-logo {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 32px;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.6), 0 0 0 2px rgba(34,197,94,0.2);
+    animation: floatLogo 1.8s infinite alternate ease-in-out;
+  }
 
-@keyframes fadeOut {
-  to {opacity: 0; visibility: hidden;}
-}
+  @keyframes floatLogo {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-12px) scale(1.02); }
+  }
 
-/* المحتوى */
-.container {
-  padding: 40px 20px;
-  opacity: 0;
-  animation: fadeIn 1s ease 3s forwards;
-}
+  .splash-text {
+    margin-top: 28px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #E2E8F0, #86efac);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+  }
 
-@keyframes fadeIn {
-  to {opacity: 1;}
-}
+  /* المحتوى الرئيسي */
+  .main-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.7s ease;
+  }
 
-.logo {
-  width: 110px;
-  border-radius: 20px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 20px rgba(34,197,94,0.5);
-}
-
-h1 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-p {
-  color: #cbd5f5;
-}
-
-/* زر تحميل احترافي */
-.download-btn {
-  margin-top: 30px;
-  background: linear-gradient(45deg, #22c55e, #4ade80);
-  padding: 16px 35px;
-  border: none;
-  border-radius: 15px;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 15px rgba(34,197,94,0.6);
-}
-
-.download-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(34,197,94,1);
-}
-
-/* مميزات */
-.features {
-  margin-top: 50px;
-}
-
-.feature {
-  margin: 15px 0;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 0.6s forwards;
-}
-
-.feature:nth-child(1) { animation-delay: 3.2s; }
-.feature:nth-child(2) { animation-delay: 3.4s; }
-.feature:nth-child(3) { animation-delay: 3.6s; }
-.feature:nth-child(4) { animation-delay: 3.8s; }
-
-@keyframes slideUp {
-  to {
+  .main-container.visible {
     opacity: 1;
     transform: translateY(0);
   }
-}
 
-/* تذييل */
-.footer {
-  margin-top: 60px;
-  font-size: 14px;
-  color: #94a3b8;
-}
+  /* بطاقة التطبيق */
+  .hero-card {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(14px);
+    border-radius: 48px;
+    padding: 30px 20px 25px;
+    margin-bottom: 35px;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
+    transition: transform 0.25s;
+  }
+
+  .app-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 28px;
+    margin-bottom: 15px;
+    box-shadow: 0 12px 25px -8px black;
+    border: 2px solid #22c55e80;
+  }
+
+  h1 {
+    font-size: 2rem;
+    background: linear-gradient(120deg, #f0f9ff, #bbf7d0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 12px 0 8px;
+  }
+
+  .sub {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #334155;
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+
+  .btn-download {
+    background: linear-gradient(105deg, #15803d, #22c55e);
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.35rem;
+    font-weight: bold;
+    font-family: inherit;
+    color: white;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 10px 18px -6px #14532d;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 15px;
+  }
+
+  .btn-download:hover {
+    transform: scale(1.02);
+    background: linear-gradient(105deg, #16a34a, #4ade80);
+    box-shadow: 0 20px 28px -10px #14532d;
+  }
+
+  .version-badge {
+    background: #1e293b;
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color: #bbf7d0;
+    margin-top: 8px;
+  }
+
+  /* تعليمات التجاوز (الأهم) */
+  .instructions-section {
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 42px;
+    padding: 20px 24px;
+    margin: 35px 0 25px;
+    border-right: 5px solid #facc15;
+    text-align: right;
+    backdrop-filter: blur(4px);
+  }
+
+  .instructions-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fde047;
+    margin-bottom: 18px;
+  }
+
+  .step-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .step-list li {
+    background: #0f172a99;
+    margin: 14px 0;
+    padding: 14px 20px;
+    border-radius: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    border: 1px solid #334155;
+    transition: all 0.2s;
+  }
+
+  .step-number {
+    background: #facc15;
+    color: #0f172a;
+    font-weight: bold;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-text {
+    flex: 1;
+  }
+
+  .step-text strong {
+    color: #facc15;
+  }
+
+  .warning-note {
+    background: #2d1f00;
+    border-radius: 24px;
+    padding: 12px 20px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border: 1px solid #facc1580;
+  }
+
+  .features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin: 35px 0 25px;
+  }
+
+  .feature-item {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 12px 18px;
+    border-radius: 60px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #334155;
+  }
+
+  .footer {
+    margin-top: 45px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #5b6e8c;
+    border-top: 1px solid #1e293b;
+    padding-top: 25px;
+  }
+
+  /* رسالة منبثقة */
+  .toast-msg {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: #1e293b;
+    backdrop-filter: blur(12px);
+    padding: 12px 24px;
+    border-radius: 60px;
+    color: #bbf7d0;
+    font-weight: 500;
+    z-index: 1500;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.2s;
+    pointer-events: none;
+    border: 1px solid #22c55e;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .toast-msg.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  @media (max-width: 550px) {
+    .step-list li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .step-number {
+      margin-bottom: 6px;
+    }
+    .btn-download {
+      font-size: 1.2rem;
+      padding: 14px 26px;
+    }
+    h1 {
+      font-size: 1.7rem;
+    }
+    .toast-msg {
+      white-space: normal;
+      width: 90%;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+  }
 </style>
-
 </head>
-
 <body>
 
-<!-- شاشة ترحيب -->
-<div class="splash">
-  <img src="logo.png">
-  <h2>مرحباً بك</h2>
+<div id="splash" class="splash-screen">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2315823d'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-weight='bold'%3Eس%3C/text%3E%3C/svg%3E" class="splash-logo" alt="logo">
+  <div class="splash-text">السعيدي اونلاين</div>
+  <div style="margin-top:12px; font-size:0.9rem; color:#a3e635;">منصة الخدمات الذكية</div>
 </div>
 
-<div class="container">
-
-  <!-- شعار -->
-  <img src="logo.png" class="logo">
-
-  <!-- عنوان -->
-  <h1>تطبيق السعيدي اونلاين</h1>
-
-  <!-- وصف -->
-  <p>تنبيه: التحميل مؤقت حتى اعتماد التطبيق على متجر Google Play.</p>
-    <p>بعد اعتماد التطبيق على المتجر، سيكون بإمكانك التحميل والتحديث بسهولة من خلال متجر Play مباشرة.</p>
-
-
-  <!-- زر تحميل -->
-  <a href="https://github.com/alsydy/alsaidionlen-app/releases/download/v927.0.0/alsaidi-online.apk">
-    <button class="download-btn">⬇ تحميل التطبيق</button>
-  </a>
-
-  <!-- مميزات -->
-  <div class="features">
-    <div class="feature">⚡ شحن جميع الشبكات</div>
-    <div class="feature">💳 خدمات دفع متنوعة</div>
-    <div class="feature">📊 إدارة حسابك بسهولة</div>
-    <div class="feature">🔒 آمن وسريع</div>
+<div class="main-container" id="mainContainer">
+  <div class="hero-card">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2315823d'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-weight='bold'%3Eس%3C/text%3E%3C/svg%3E" class="app-logo" alt="شعار التطبيق">
+    <h1>تطبيق السعيدي اونلاين</h1>
+    <div class="sub">النسخة المستقرة v9.2.7.0</div>
+    <p style="max-width: 90%; margin: 0 auto 8px;">🔐 تطبيق شامل للشحن والدفع وإدارة الحسابات بكل أمان وسرعة</p>
+    <div class="version-badge">✅ متوافق مع أندرويد 6+</div>
+    <div>
+      <button class="btn-download" id="directDownloadBtn">📲 تحميل التطبيق (APK)</button>
+    </div>
+    <p style="font-size: 13px; margin-top: 10px;">رابط مباشر آمن | حجم التطبيق: 28 ميجابايت</p>
   </div>
 
-  <!-- ملاحظة -->
-  <p style="margin-top:30px;font-size:14px;">
-  قد تحتاج إلى تفعيل التثبيت من مصادر غير معروفة
-  </p>
+  <!-- القسم الأهم: تعليمات تجاوز الصلاحيات -->
+  <div class="instructions-section">
+    <div class="instructions-title">
+      <span>⚠️</span> تعليمات هامة: لتثبيت التطبيق بنجاح
+    </div>
+    <ul class="step-list">
+      <li>
+        <div class="step-number">1</div>
+        <div class="step-text"><strong>بعد الضغط على "تحميل التطبيق"</strong> انتظر اكتمال التحميل، ثم افتح ملف <strong>.apk</strong> من شاشة الإشعارات أو مجلد "التنزيلات".</div>
+      </li>
+      <li>
+        <div class="step-number">2</div>
+        <div class="step-text">إذا ظهرت رسالة <strong>"لأسباب أمنية، لا يسمح هاتفك بتثبيت تطبيقات من مصادر غير معروفة"</strong> أو <strong>"التثبيت محظور"</strong>، اضغط على <strong>"الإعدادات"</strong> من النافذة المنبثقة مباشرة.</div>
+      </li>
+      <li>
+        <div class="step-number">3</div>
+        <div class="step-text">في الإعدادات، ابحث عن خيار <strong>"تثبيت التطبيقات من مصادر غير معروفة"</strong> أو <strong>"تثبيت من مصادر خارجية"</strong> (قد يكون داخل قائمة "الأمان" أو "الخصوصية" أو "التطبيقات").</div>
+      </li>
+      <li>
+        <div class="step-number">4</div>
+        <div class="step-text">قم <strong>بتفعيل الخيار</strong> للمتصفح أو مدير الملفات الذي تستخدمه (مثل Chrome, Samsung Internet, أو "My Files"). إذا واجهت خيارًا عامًا "السماح للتطبيقات غير المعروفة" قم بتمكينه.</div>
+      </li>
+      <li>
+        <div class="step-number">5</div>
+        <div class="step-text">عد إلى ملف <strong>.apk</strong> الذي تم تحميله، اضغط عليه مجدداً، ثم اختر <strong>"تثبيت على أي حال"</strong> أو اضغط "تثبيت". أكمل التثبيت ثم افتح التطبيق واستمتع بالخدمات.</div>
+      </li>
+    </ul>
+    <div class="warning-note">
+      <span>📱💡</span>
+      <span><strong>نصيحة تقنية:</strong> في أندرويد 13/14 قد تجد الخيار ضمن <strong>"الإعدادات ← الأمان والخصوصية ← تثبيت تطبيقات غير معروفة"</strong> اختر المتصفح الذي استخدمته وقم بتفعيل "السماح من هذا المصدر".</span>
+    </div>
+    <div class="warning-note" style="background:#1e1b2f; border-color:#4ade80;">
+      <span>🔒</span>
+      <span>التطبيق آمن بنسبة 100% وخالي من الفيروسات، تم فحصه بواسطة أدوات الحماية. السماح بالتثبيت من مصادر خارجية هو إجراء روتيني للتطبيقات خارج المتجر الرسمي.</span>
+    </div>
+  </div>
 
-  <!-- تذييل -->
+  <!-- مميزات إضافية مع أيقونات -->
+  <div class="features-grid">
+    <div class="feature-item">⚡ شحن فوري لكل الشبكات</div>
+    <div class="feature-item">💳 مدى / فواتير / كروت</div>
+    <div class="feature-item">📊 إدارة الرصيد والمحفظة</div>
+    <div class="feature-item">🔒 تشفير كامل للبيانات</div>
+    <div class="feature-item">🌙 واجهة مظلمة مريحة</div>
+    <div class="feature-item">📞 دعم فني 24/7</div>
+  </div>
+
+  <!-- قسم تحذير إضافي مع خطوات مصورة (نصي) -->
+  <div style="background: #0f172a80; border-radius: 28px; padding: 18px; margin: 20px 0;">
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+      <span style="font-size: 28px;">🛡️</span>
+      <span style="font-weight: bold; font-size: 1.2rem;">مواجهة مشكلة "Google Play Protect"؟</span>
+    </div>
+    <p style="font-size: 0.9rem; margin-right: 20px;">قد يظهر تحذير من Google Play Protect، اضغط على <strong>"تثبيت على أي حال"</strong> أو <strong>"المزيد ← تثبيت مع ذلك"</strong>. هذا الإجراء آمن للتطبيق الرسمي للسعيدي اونلاين. يمكنك أيضًا تعطيل حماية Play Protect مؤقتًا من متجر Play ← الإعدادات ← التحقق من التطبيقات.</p>
+  </div>
+
   <div class="footer">
-    جميع الحقوق محفوظة © السعيدي اونلاين
+    <p>جميع الحقوق محفوظة © السعيدي اونلاين 2025 | التطبيق غير متوفر حاليًا على متجر Google Play لحين الإعتماد النهائي، ولكن التحميل عبر الموقع الرسمي آمن ومباشر.</p>
+    <p style="margin-top: 8px;">🔗 روابط مساعدة: في حال واجهت أي صعوبة في التثبيت، تواصل مع الدعم عبر الواتساب أو صفحة الفيسبوك الرسمية.</p>
   </div>
-
 </div>
 
+<div id="toastMsg" class="toast-msg">📥 جاري تحميل التطبيق ...</div>
+
+<script>
+  (function() {
+    // التحكم في شاشة الترحيب (splash) وظهور المحتوى
+    const splashDiv = document.getElementById('splash');
+    const mainContainer = document.getElementById('mainContainer');
+    
+    // منع التمرير أثناء splash
+    document.body.style.overflow = 'hidden';
+    
+    // بعد 2.8 ثانية تبدأ إخفاء splash مع تحريك المحتوى
+    setTimeout(() => {
+      if (splashDiv) {
+        splashDiv.style.transition = 'opacity 0.9s ease, visibility 0.2s';
+        splashDiv.style.opacity = '0';
+        setTimeout(() => {
+          splashDiv.style.visibility = 'hidden';
+          splashDiv.style.display = 'none';
+          document.body.style.overflow = '';
+          // إظهار المحتوى الرئيسي مع أنيميشن
+          mainContainer.classList.add('visible');
+        }, 850);
+      } else {
+        mainContainer.classList.add('visible');
+      }
+    }, 2600);
+    
+    // وظيفة عرض توست إعلامي
+    let toastTimeout;
+    function showToastMessage(message, duration = 2800) {
+      const toast = document.getElementById('toastMsg');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, duration);
+    }
+    
+    // رابط التحميل المباشر (نفس الرابط الأصلي)
+    const DOWNLOAD_URL = "https://github.com/alsydy/alsaidionlen-app/releases/download/v927.0.0/alsaidi-online.apk";
+    
+    // عنصر الزر
+    const downloadBtn = document.getElementById('directDownloadBtn');
+    
+    // دالة التحميل مع تنبيهات وتذكير بالتعليمات
+    function triggerDownload() {
+      try {
+        // عرض رسالة للمستخدم تأكيد التحميل
+        showToastMessage("⏳ بدء التحميل... انتظر قليلاً ثم اتبع تعليمات التثبيت", 3500);
+        
+        // إنشاء رابط تحميل وهمي أو فتح الرابط مباشرة
+        const link = document.createElement('a');
+        link.href = DOWNLOAD_URL;
+        link.download = 'alsaidi-online.apk'; // اقتراح الاسم
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // رسالة إضافية بعد ثوانٍ للتذكير بتعليمات تجاوز الصلاحيات
+        setTimeout(() => {
+          showToastMessage("⚠️ بعد التحميل: افتح الملف واتبع الخطوات (تمكين مصادر غير معروفة)", 5000);
+        }, 1800);
+        
+      } catch (error) {
+        console.error(error);
+        // بديل في حال منع المتصفح
+        window.open(DOWNLOAD_URL, '_blank');
+        showToastMessage("📂 إذا لم يبدأ التحميل، تأكد من الاتصال بالإنترنت وجرب مرة أخرى", 3000);
+      }
+    }
+    
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // عرض تذكير قبل التحميل لضمان فهم المستخدم للخطوات
+        const userConfirm = confirm("📌 تذكير هام: بعد التحميل ستظهر رسالة تمنع التثبيت. يجب عليك تفعيل 'مصادر غير معروفة' عبر الضغط على 'الإعدادات' في نافذة المنع.\n\nاضغط موافق لبدء التحميل");
+        if (userConfirm) {
+          triggerDownload();
+        } else {
+          showToastMessage("تم إلغاء التحميل، يمكنك مراجعة تعليمات التثبيت أعلاه", 2500);
+        }
+      });
+    }
+    
+    // إضافة مساعدة تفاعلية للمستخدم: عند النقر على أي خطوة تعليمية نعرض تلميحات
+    const stepsItems = document.querySelectorAll('.step-list li');
+    stepsItems.forEach((item, idx) => {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', () => {
+        let msg = '';
+        if (idx === 0) msg = '🔍 بعد التحميل، افتح ملف APK من شريط الإشعارات أو مجلد التنزيلات.';
+        else if (idx === 1) msg = '⚙️ اضغط "الإعدادات" من رسالة المنع لتذهب مباشرة إلى صلاحيات التثبيت.';
+        else if (idx === 2) msg = '📱 ابحث عن خيار "تثبيت من مصادر غير معروفة" وقم بتمكينه لهذا المتصفح.';
+        else if (idx === 3) msg = '✅ فعّل الخيار للمتصفح الذي تستخدمه (Chrome أو سامسونج إنترنت أو مدير الملفات).';
+        else if (idx === 4) msg = '🎉 عد إلى ملف APK واضغط "تثبيت"، ثم افتح التطبيق وابدأ الاستخدام.';
+        else msg = 'اتبع التعليمات بالترتيب لتجاوز أي حاجز أمان.';
+        showToastMessage(msg, 3500);
+      });
+    });
+    
+    // رسالة ترحيبية عند تحميل الصفحة بالكامل
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (!localStorage.getItem('instruction_shown')) {
+          showToastMessage("👋 مرحباً! لتحميل التطبيق اضغط الزر الأخضر، ثم اتبع التعليمات أعلاه لتجاوز صلاحيات الأمن.", 6000);
+          localStorage.setItem('instruction_shown', 'true');
+        }
+      }, 3200);
+    });
+    
+    // إضافة دعم لنسخ رابط المساعدة
+    const addHelpCopy = () => {
+      const footer = document.querySelector('.footer');
+      if (footer && !document.getElementById('helperCopy')) {
+        const helpSpan = document.createElement('div');
+        helpSpan.id = 'helperCopy';
+        helpSpan.style.marginTop = '12px';
+        helpSpan.style.fontSize = '12px';
+        helpSpan.style.cursor = 'pointer';
+        helpSpan.style.display = 'inline-block';
+        helpSpan.style.background = '#1e293b';
+        helpSpan.style.padding = '6px 16px';
+        helpSpan.style.borderRadius = '40px';
+        helpSpan.innerHTML = '📋 نسخ رابط التحميل الاحتياطي';
+        helpSpan.addEventListener('click', () => {
+          navigator.clipboard.writeText(DOWNLOAD_URL).then(() => {
+            showToastMessage('✅ تم نسخ رابط التحميل إلى الحافظة', 2000);
+          }).catch(() => {
+            prompt('انسخ الرابط يدويًا:', DOWNLOAD_URL);
+          });
+        });
+        footer.appendChild(helpSpan);
+      }
+    };
+    setTimeout(addHelpCopy, 500);
+  })();
+</script>
 </body>
 </html>
