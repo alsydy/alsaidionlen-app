@@ -6,13 +6,15 @@
 <title>تحميل تطبيق السعيدي اونلاين</title>
 
 <style>
+/* إعدادات عامة */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
   text-align: center;
   overflow-x: hidden;
+  direction: rtl; /* ضبط اتجاه الصفحة للعربية */
 }
 
 /* شاشة الترحيب */
@@ -35,7 +37,7 @@ body {
 @keyframes zoom { from {transform: scale(1);} to {transform: scale(1.1);} }
 @keyframes fadeOut { to {opacity: 0; visibility: hidden;} }
 
-/* المحتوى */
+/* المحتوى الرئيسي */
 .container {
   padding: 40px 20px;
   opacity: 0;
@@ -46,14 +48,23 @@ body {
 .logo {
   width: 110px;
   border-radius: 20px;
-  margin-bottom: 15px;
+  margin: 0 auto 15px auto;
   box-shadow: 0 0 20px rgba(34,197,94,0.5);
 }
 
-h1 { font-size: 30px; margin-bottom: 10px; }
-p { color: #cbd5f5; line-height: 1.6; }
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
 
-/* زر تحميل احترافي */
+p {
+  color: #cbd5f5;
+  line-height: 1.8;
+  text-align: center; /* توحيد محاذاة الفقرة */
+}
+
+/* زر تحميل */
 .download-btn {
   margin-top: 20px;
   background: linear-gradient(45deg, #22c55e, #4ade80);
@@ -72,8 +83,17 @@ p { color: #cbd5f5; line-height: 1.6; }
 }
 
 /* مميزات */
-.features { margin-top: 40px; }
-.feature { margin: 12px 0; opacity: 0; transform: translateY(20px); animation: slideUp 0.6s forwards; }
+.features {
+  margin-top: 40px;
+  text-align: right; /* محاذاة المميزات لليمين */
+}
+.feature {
+  margin: 12px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s forwards;
+  font-size: 18px;
+}
 .feature:nth-child(1) { animation-delay: 3.2s; }
 .feature:nth-child(2) { animation-delay: 3.4s; }
 .feature:nth-child(3) { animation-delay: 3.6s; }
@@ -82,7 +102,7 @@ p { color: #cbd5f5; line-height: 1.6; }
 
 /* قسم التعليمات */
 .instructions {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.35);
   margin: 30px 0;
   padding: 20px;
   border-radius: 12px;
@@ -105,21 +125,21 @@ p { color: #cbd5f5; line-height: 1.6; }
 
 <!-- شاشة ترحيب -->
 <div class="splash">
-  <img src="logo.png">
+  <img src="logo.png" alt="شعار التطبيق">
   <h2>مرحباً بك</h2>
 </div>
 
 <div class="container">
 
   <!-- شعار -->
-  <img src="logo.png" class="logo">
+  <img src="logo.png" class="logo" alt="شعار التطبيق">
 
   <!-- عنوان -->
   <h1>تطبيق السعيدي اونلاين</h1>
 
   <!-- تنبيه التحميل المؤقت -->
   <p style="color:#facc15;font-weight:bold;">
-    تنبيه: التحميل مؤقت حتى اعتماد التطبيق على متجر Google Play.<br>
+    ⚠️ تنبيه: التحميل مؤقت حتى اعتماد التطبيق على متجر Google Play.<br>
     بعد الاعتماد، سيكون التحديث والتحميل متاح مباشرة من المتجر.
   </p>
 
@@ -136,7 +156,7 @@ p { color: #cbd5f5; line-height: 1.6; }
     <div class="feature">🔒 آمن وسريع</div>
   </div>
 
-  <!-- تعليمات تفعيل المصادر غير المعروفة -->
+  <!-- تعليمات التثبيت -->
   <div class="instructions">
     <strong>تعليمات مهمة لتثبيت التطبيق:</strong><br><br>
     1️⃣ ادخل إلى <strong>الإعدادات</strong> في جهازك.<br>
